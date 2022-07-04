@@ -8,6 +8,7 @@
     , endDate : Optional Text
     , summary : Optional Text
     , highlights : Optional (List Text)
+    , skills : Optional (List Text)
     , salaries : Optional (List (./Salary.dhall).Type)
     }
 , default =
@@ -20,6 +21,7 @@
   , endDate = None Text
   , summary = None Text
   , highlights = None (List Text)
+  , skills = None (List Text)
   , salaries = None (List (./Salary.dhall).Type)
   }
 }
