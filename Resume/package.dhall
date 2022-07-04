@@ -10,6 +10,7 @@
 , Project = ./Project.dhall
 , Publication = ./Publication.dhall
 , Reference = ./Reference.dhall
+, Salary = ./Salary.dhall
 , Skill = ./Skill.dhall
 , Volunterr = ./Volunteer.dhall
 , Work = ./Work.dhall
