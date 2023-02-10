@@ -12,6 +12,6 @@
 , Reference = ./Reference.dhall
 , Salary = ./Salary.dhall
 , Skill = ./Skill.dhall
-, Volunterr = ./Volunteer.dhall
+, Volunteer = ./Volunteer.dhall
 , Work = ./Work.dhall
 }
