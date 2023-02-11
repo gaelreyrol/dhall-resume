@@ -18,9 +18,9 @@
           };
         };
         packages = flake-utils.lib.flattenTree {
-          default = pkgs.dhallPackages.buildDhallPackage {
+          default = pkgs.dhallPackages.buildDhallDirectoryPackage {
             name = "Resume";
-            code = ./package.dhall;
+            src = ./.;
             source = true;
           };
         };
