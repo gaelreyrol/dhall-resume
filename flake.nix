@@ -21,6 +21,7 @@
           default = pkgs.dhallPackages.buildDhallPackage {
             name = "Resume";
             code = ./package.dhall;
+            source = true;
           };
         };
       }
