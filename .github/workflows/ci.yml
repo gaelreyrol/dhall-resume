@@ -25,7 +25,7 @@ jobs:
           name: gaelreyrol
 
       - name: Run Dhall linter
-        run: nix develop --command dhall lint dhall/**/*.dhall
+        run: nix develop --command dhall lint Resume/*.dhall
 
       - name: Run Formatter check
         run: nix fmt . -- --check
