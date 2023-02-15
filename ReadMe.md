@@ -1,5 +1,8 @@
 # dhall-resume
 
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
+[![.github/workflows/ci.yml](https://github.com/gaelreyrol/dhall-resume/actions/workflows/ci.yml/badge.svg)](https://github.com/gaelreyrol/dhall-resume/actions/workflows/ci.yml)
+
 `dhall-resume` contains [Dhall](https://dhall-lang.org/) bindings to [JSON Resume](https://jsonresume.org/) schema with some extra definitions.
 
 ## Example
