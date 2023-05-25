@@ -8,7 +8,7 @@
       let
         pkgs = import nixpkgs { inherit system; };
       in
-      rec {
+      {
         formatter = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
         devShells = {
           default = pkgs.mkShell {
