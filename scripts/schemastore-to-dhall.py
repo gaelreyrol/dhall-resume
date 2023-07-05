@@ -1,4 +1,3 @@
-#!/bin/env python3
 # Copyright 2020 Red Hat
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -14,7 +13,6 @@
 # under the License.
 
 import json
-import pprint
 import sys
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -104,6 +102,8 @@ def dhall_record(obj: Object, name: str, defs: Defs) -> Types:
 
 
 SchemasFiles = List[Tuple[str, str]]
+
+
 def processSchema(name: str, path: str) -> SchemasFiles:
     schema = json.loads(open(path).read())
     results: SchemasFiles = []
@@ -111,12 +111,12 @@ def processSchema(name: str, path: str) -> SchemasFiles:
                            if type_def]:
         defaults = " , ".join([
             f"{k} = {v.replace('Optional', 'None')}"
-            for k,v in type_def.items()
+            for k, v in type_def.items()
             if v.startswith("Optional ")])
         results.append((
             f"Resume/{name}.dhall",
             "{ %s }" % " , ".join([
-                "Type = { %s }" % " , ".join([f"{k} : {v}" for k,v in type_def.items()]),
+                "Type = { %s }" % " , ".join([f"{k} : {v}" for k, v in type_def.items()]),
                 "default = { %s }" % (defaults if defaults else "=")])))
     return results
 

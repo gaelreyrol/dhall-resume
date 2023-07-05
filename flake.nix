@@ -1,7 +1,10 @@
 {
   description = "A Dhall package flake";
 
-  inputs.flake-utils.url = "github:numtide/flake-utils";
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
 
   outputs = { self, nixpkgs, flake-utils }:
     flake-utils.lib.eachDefaultSystem (system:
@@ -15,15 +18,23 @@
             packages = with pkgs; [
               dhall
               dhall-nixpkgs
+              python310
             ];
           };
         };
-        packages = flake-utils.lib.flattenTree {
-          default = pkgs.dhallPackages.buildDhallDirectoryPackage {
+        packages = {
+          schemastore-to-dhall = pkgs.writers.writePython3 "schemastore-to-dhall"
+            {
+              flakeIgnore = [ "E501" "E722" ];
+            } ./scripts/schemastore-to-dhall.py;
+
+          dhallResume = pkgs.dhallPackages.buildDhallDirectoryPackage {
             name = "Resume";
             src = ./.;
             source = true;
           };
+
+          default = self.packages.${system}.dhallResume;
         };
       }
     );
