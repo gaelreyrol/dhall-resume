@@ -20,7 +20,7 @@ jobs:
         uses: cachix/install-nix-action@v24
 
       - name: Setup Cachix
-        uses: cachix/cachix-action@v13
+        uses: cachix/cachix-action@v14
         with:
           name: gaelreyrol
 
