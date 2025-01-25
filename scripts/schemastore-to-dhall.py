@@ -60,7 +60,12 @@ def dhall_type(value: Property, name: str, types: Types, defs: Defs) -> Optional
         value['type'] = [value['type']]
     if value.get("$ref"):
         ref = value['$ref'].split('/')[-1]
-        return dhall_type(defs[ref], ref, types, defs)
+        # This is not full-ISO8601, but a 'Date' should be sufficient
+        # for resume purposes
+        if ref == "iso8601":
+            _type = 'Date'
+        else:
+            return dhall_type(defs[ref], ref, types, defs)
     elif "object" in value["type"]:
         if all(map(lambda k: not value.get(k), ["properties", "patternProperties", "additionalProperties"])):
             return None

@@ -2,8 +2,8 @@
     { organization : Optional Text
     , position : Optional Text
     , url : Optional Text
-    , startDate : Optional Text
-    , endDate : Optional Text
+    , startDate : Optional Date
+    , endDate : Optional Date
     , summary : Optional Text
     , highlights : Optional (List Text)
     }
@@ -11,8 +11,8 @@
   { organization = None Text
   , position = None Text
   , url = None Text
-  , startDate = None Text
-  , endDate = None Text
+  , startDate = None Date
+  , endDate = None Date
   , summary = None Text
   , highlights = None (List Text)
   }

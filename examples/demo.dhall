@@ -10,6 +10,7 @@ in Resume.Basic::{
         Resume.Work::{
             , name = Some "Foo"
             , location = Some "Earth"
+            , startDate = Some 2024-01-27
             , salaries = Some [
                 Resume.Salary::{
                     amount = 2000
