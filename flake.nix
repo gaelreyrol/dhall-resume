@@ -46,13 +46,12 @@
               };
             in
             pkgs.stdenv.mkDerivation {
-              name = "dhall-resume-to-json";
-
+              name = "demo";
               buildCommand = ''
                 dhall-to-json <<< "${code}/source.dhall" > $out
+                resumed validate $out
               '';
-
-              buildInputs = [ pkgs.dhall-json ];
+              buildInputs = [ pkgs.dhall-json pkgs.resumed ];
             };
         };
         checks = {
