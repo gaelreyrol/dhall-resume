@@ -35,6 +35,28 @@
           };
 
           default = self.packages.${system}.dhallResume;
+
+          demo =
+            let
+              code = pkgs.dhallPackages.buildDhallPackage {
+                name = "demo";
+                code = "${self}/examples/demo.dhall";
+                dependencies = [ self.packages.${system}.default ];
+                source = true;
+              };
+            in
+            pkgs.stdenv.mkDerivation {
+              name = "dhall-resume-to-json";
+
+              buildCommand = ''
+                dhall-to-json <<< "${code}/source.dhall" > $out
+              '';
+
+              buildInputs = [ pkgs.dhall-json ];
+            };
+        };
+        checks = {
+          inherit (self.packages.${system}) demo;
         };
       }
     );
