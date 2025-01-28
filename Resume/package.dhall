@@ -6,6 +6,7 @@
 , Interest = ./Interest.dhall
 , Language = ./Language.dhall
 , Location = ./Location.dhall
+, Meta = ./Meta.dhall
 , Profile = ./Profile.dhall
 , Project = ./Project.dhall
 , Publication = ./Publication.dhall
