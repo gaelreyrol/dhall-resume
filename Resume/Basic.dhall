@@ -1,5 +1,6 @@
 { Type =
-    { basics : Optional (./Basics.dhall).Type
+    { `$schema` : Optional Text
+    , basics : Optional (./Basics.dhall).Type
     , work : Optional (List (./Work.dhall).Type)
     , volunteer : Optional (List (./Volunteer.dhall).Type)
     , education : Optional (List (./Education.dhall).Type)
@@ -11,9 +12,11 @@
     , interests : Optional (List (./Interest.dhall).Type)
     , references : Optional (List (./Reference.dhall).Type)
     , projects : Optional (List (./Project.dhall).Type)
+    , meta : Optional (./Meta.dhall).Type
     }
 , default =
-  { basics = None (./Basics.dhall).Type
+  { `$schema` = None Text
+  , basics = None (./Basics.dhall).Type
   , work = None (List (./Work.dhall).Type)
   , volunteer = None (List (./Volunteer.dhall).Type)
   , education = None (List (./Education.dhall).Type)
@@ -25,5 +28,6 @@
   , interests = None (List (./Interest.dhall).Type)
   , references = None (List (./Reference.dhall).Type)
   , projects = None (List (./Project.dhall).Type)
+  , meta = None (./Meta.dhall).Type
   }
 }
