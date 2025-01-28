@@ -40,7 +40,6 @@ Fixes: Dict[TypeName, Type] = dict(
     ),
 )
 
-
 def capitalize(name: str) -> str:
     return "".join(map(lambda x: x[0].upper() + x[1:], name.split('_')))
 
@@ -102,9 +101,19 @@ def dhall_record(obj: Object, name: str, defs: Defs) -> Types:
         dt = dhall_type(value, key, types, defs)
         if dt:
             dhall_type_str, types = dt
-            new_type[key] = dhall_type_str
+            key_normalized = normalize_key(key)
+            new_type[key_normalized] = dhall_type_str
     return types + [(capitalize(name), new_type)]
 
+def normalize_key(key: str) -> str:
+    """Normalize a key to make it suitable to use as a record field.
+
+    For the time being this only escapes dollar sign.
+    """
+    if '$' in key:
+        return '`' + key + '`'
+    else:
+        return key
 
 SchemasFiles = List[Tuple[str, str]]
 
